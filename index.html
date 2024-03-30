@@ -1,0 +1,29 @@
+<!DOCTYPE html> 
+<html lang="pt-Br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <title>Consulta Via Cep</title>
+</head>
+<body>
+    <h1>Consulta Cep</h1>
+    <form id="cepForm">
+        <label for="cepInput">Informe o cep:</label>
+        <input type="text" id="cepInput" name="cepInput" onkeypress="return validarCep(event)" maxlength="8">
+        <button type="button" onclick="exibirCep()">Consultar</button>
+        <button type="button" onclick="adicionarAosFavoritos()">Adicionar aos Favoritos</button>
+        <button type="button" onclick="exibirFavoritos()">Listar Favoritos</button>
+        <button type="button" onclick="ocultarFavoritos()">Ocultar Favoritos</button>
+    </form>
+    <div id="resultadoBusca"></div>
+
+    <!-- Histórico de Pesquisas -->
+    <div id="historicoPesquisas"></div>
+
+        <!-- Histórico de Pesquisas -->
+    <div id="historicoFavoritos"></div>
+
+    <script src="buscaCep.js"></script>
+</body>
+</html>
