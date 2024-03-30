@@ -2,7 +2,10 @@ window.onload = async () => {
     await listarFavoritos();
 };
 
-function exibirFavoritos(){
+async function exibirFavoritos(){
+
+    await listarFavoritos();
+
     const historicoElement = document.getElementById("historicoFavoritos");
     historicoElement.innerHTML = "<strong>Histórico de favoritos:</strong><br>";
     historicodefavoritos.forEach(endereco => {
@@ -70,8 +73,6 @@ function adicionarAlistaDeFavoritos(endereco) {
 async function adicionarAosFavoritos() {
 
     var novoEndereco = enderecos[0];
-    console.log(enderecos[0]);
-    console.log("aqui");
 
     try {
         const response = await fetch(`https://soft-foot-production.up.railway.app/enderecos/salvar`, {
@@ -83,18 +84,16 @@ async function adicionarAosFavoritos() {
             }
         })
         .then(res => {
-            console.log(novoEndereco);
             if (novoEndereco === undefined || novoEndereco === null || novoEndereco === "") {
                 throw new Error('O CEP não pode ser vazio');
             }
 
             res.json();
             if (res.status === 400) {
-                console.log(res);
                 throw new Error('Já possui um endereço como o mesmo CEP salvo anteriormente ');
             }
         })
-        .then(data => console.log(data));
+        .then(data => (data));
 
     } catch (error) {
         console.error('Erro ao obter informações do CEP:', error);
@@ -166,7 +165,6 @@ async function listarFavoritos() {
         .then(res => res.json())
         .then(data => {
             historicodefavoritos = data
-            console.log(historicodefavoritos);
         });
 
     } catch (error) {
